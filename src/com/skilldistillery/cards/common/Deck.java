@@ -29,13 +29,16 @@ public class Deck {
 		return cards.remove(cards.size() - 1);
 	}
 	
-//	public void dealCards(Hand hand, int numberOfCards) {
-//		for(int i = 0; i < numberOfCards; ++i) {
-//			if(cards.isEmpty())
-//				cards = createDeck();
-//			hand.addCard(dealCard());
-//		}
-//	}
+	public List<Card> dealCards(Hand hand, int numberOfCards) {
+		List<Card> res = new ArrayList<>();
+		for(int i = 0; i < numberOfCards; ++i) {
+			if(cards.isEmpty())
+				cards = createDeck();
+			res.add(dealCard());
+		}
+		
+		return res;
+	}
 	
 	public void suffle() {
 		Collections.shuffle(cards);
