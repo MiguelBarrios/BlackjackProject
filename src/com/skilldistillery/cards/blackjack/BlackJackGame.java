@@ -12,8 +12,8 @@ public class BlackJackGame {
 	private Deck deck;
 	
 	public BlackJackGame() {
-		player = new Player();
-		dealer = new Dealer();
+		player = new Player("Player");
+		dealer = new Dealer("Dealer");
 		deck = new Deck();
 	}
 	

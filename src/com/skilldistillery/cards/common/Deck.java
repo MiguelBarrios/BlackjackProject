@@ -31,8 +31,10 @@ public class Deck {
 	
 	public void dealCards(int numberOfCards, Player player) {
 		for(int i = 0; i < numberOfCards; ++i) {
-			if(cards.isEmpty())
+			if(cards.isEmpty()) {
 				cards = createDeck();
+				suffle();
+			}
 			Card card = dealCard();
 			player.receiveCard(card);
 		}
