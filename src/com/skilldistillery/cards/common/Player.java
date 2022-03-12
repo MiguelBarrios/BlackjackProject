@@ -3,9 +3,9 @@ package com.skilldistillery.cards.common;
 import com.skilldistillery.cards.blackjack.BlackjackHand;
 
 public class Player {
-	private Hand hand;
+	protected Hand hand;
 	
-	private String name;
+	protected String name;
 	
 	public Player(String name) {
 		hand = new BlackjackHand();
@@ -19,6 +19,10 @@ public class Player {
 	@Override
 	public String toString() {
 		return name + hand + " (" + hand.getHandValue() + ")";
+	}
+	
+	public int getHandValue() {
+		return hand.getHandValue();
 	}
 	
 	
