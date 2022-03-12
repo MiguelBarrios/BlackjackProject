@@ -25,30 +25,23 @@ public class BlackJackGame {
 	
 	public void startGame() {
 		deck.suffle();
-		int results = gameCycle();
-		printResults(results);
-	}
-	
-	public void printResults(int results) {
-		String message = "";
-		switch(results) {
-		case 0: message = "Draw";
-			break;
-		case -1: message = "Dealer wins";
-			break;
-		case 1: message = "Player wins";
-			break;
+		String userInput = "1";
+		while(userInput.equals("1")) {
+			int results = turnCycle();
+			printResults(results);
+			player.clearHand();
+			dealer.clearHand();
+			System.out.print("enter 1 to play again, enter anything else to continue: ");
+			userInput = scanner.nextLine().trim();
 		}
-		
-		System.out.println(message);
-		
+
 		
 	}
 	
 	// return 1 if player won
 	// return -1 if player lost
 	// return 0 if draw
-	public int gameCycle() {
+	public int turnCycle() {
 		dealNewHand(player);
 		dealNewHand(dealer);
 		showTable();
@@ -72,8 +65,6 @@ public class BlackJackGame {
 		System.out.println(dealer);
 	}
 	
-
-
 	public void dealNewHand(Player player) {
 		deck.dealCards(2, player);
 	}
@@ -117,6 +108,20 @@ public class BlackJackGame {
 		Card card = deck.dealCard();
 		player.receiveCard(card);
 		return player.getHandValue();
+	}
+	
+	public void printResults(int results) {
+		String message = "";
+		switch(results) {
+		case 0: message = "Draw";
+			break;
+		case -1: message = "Dealer wins";
+			break;
+		case 1: message = "Player wins";
+			break;
+		}
+		
+		System.out.println(message);
 	}
 
 	public static void main(String[] args) {

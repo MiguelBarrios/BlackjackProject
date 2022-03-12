@@ -25,6 +25,10 @@ public class Player {
 		return hand.getHandValue();
 	}
 	
+	public void clearHand(){
+		hand.clear();
+	}
+	
 	
 	
 }
