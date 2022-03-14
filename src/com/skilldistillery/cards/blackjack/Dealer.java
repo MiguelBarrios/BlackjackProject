@@ -9,10 +9,7 @@ public class Dealer extends Player {
 	}
 	
 	public void showHand(boolean partialView) {
-		String view = name + hand + " (" + hand.getHandValue() + ")";
-		
+		String view = name + hand + " (" + hand.getHandValue() + ")";	
 		System.out.println(view);
 	}
-	
-	
 }

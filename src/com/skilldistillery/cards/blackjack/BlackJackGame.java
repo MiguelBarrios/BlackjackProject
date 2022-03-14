@@ -28,13 +28,13 @@ public class BlackJackGame {
 		this.scanner = scanner;
 		player = new Player("Player");
 		dealer = new Dealer("Dealer");
-		deck = new Deck();
+		deck = new Deck(1);
 	}
 	
 	public void startGame() {
 		String userInput = "1";
 		while(userInput.equals("1")) {
-			int results = turnCycle();
+			int results = runGameCycle();
 			printResults(results);
 			clearTable();
 
@@ -61,7 +61,7 @@ public class BlackJackGame {
 	// return 0 if draw
 	// return 2 if player won by blackjack
 	// return -2 if dealer won by blackjack
-	public int turnCycle() {
+	public int runGameCycle() {
 		dealNewHand(player);
 		dealNewHand(dealer);
 		showTable();
@@ -76,7 +76,6 @@ public class BlackJackGame {
 		else if(dealer.getHandValue() == 21) {
 			return -2;
 		}
-		
 		
 		boolean playerBust = proccessPlayerTurn();
 		if(playerBust)
@@ -140,8 +139,6 @@ public class BlackJackGame {
 	}
 	
 	public void printResults(int results) {
-
-		
 		String message = "";
 		switch(results) {
 		case 0: message = "Draw";
