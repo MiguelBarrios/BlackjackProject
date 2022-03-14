@@ -7,16 +7,26 @@ import java.util.List;
 public class Deck {
 	private List<Card> cards;
 	
+	private int numberOfDecks;
+	
 	public Deck() {
-		cards = new ArrayList<>(52);
+		this(1);
+	}
+	
+	public Deck(int numberOfDecks) {
+		this.numberOfDecks = numberOfDecks;
+		cards = new ArrayList<>(52 * numberOfDecks);
 		fillDeck();
 	}
 	
 	public void fillDeck() {
-		for(Suit suit : Suit.values()) {
-			for(Rank rank : Rank.values())
-				cards.add(new Card(suit, rank));
+		for(int i = 0; i < numberOfDecks; ++i) {
+			for(Suit suit : Suit.values()) {
+				for(Rank rank : Rank.values())
+					cards.add(new Card(suit, rank));
+			}
 		}
+
 		shuffle();
 	}
 	
@@ -39,5 +49,9 @@ public class Deck {
 	
 	public void shuffle() {
 		Collections.shuffle(cards);
+	}
+	
+	public void printDeck() {
+		System.out.println(cards);
 	}
 }

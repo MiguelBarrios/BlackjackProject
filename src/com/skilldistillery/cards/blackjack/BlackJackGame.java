@@ -5,6 +5,16 @@ import com.skilldistillery.cards.common.Deck;
 import com.skilldistillery.cards.common.Player;
 
 public class BlackJackGame {
+	
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		BlackJackGame game = new BlackJackGame(scanner);
+		game.startGame();
+
+		scanner.close();
+//		Deck d = new Deck(1);
+//		System.out.println(d.checkDeckSize());
+	}
 
 	private Scanner scanner;
 
@@ -130,6 +140,8 @@ public class BlackJackGame {
 	}
 	
 	public void printResults(int results) {
+
+		
 		String message = "";
 		switch(results) {
 		case 0: message = "Draw";
@@ -144,15 +156,8 @@ public class BlackJackGame {
 			break;
 		}
 		
-		System.out.println("\n" + message);
+		System.out.println("\nResults: " + message);
+		System.out.println(player);
+		System.out.println(dealer);
 	}
-
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		BlackJackGame game = new BlackJackGame(scanner);
-		game.startGame();
-
-		scanner.close();
-	}
-
 }
