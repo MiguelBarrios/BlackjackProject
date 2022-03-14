@@ -8,17 +8,16 @@ public class Deck {
 	private List<Card> cards;
 	
 	public Deck() {
-		cards = createDeck();
+		cards = new ArrayList<>(52);
+		fillDeck();
 	}
 	
-	public List<Card> createDeck() {
-		List<Card> cards = new ArrayList<>(52);
+	public void fillDeck() {
 		for(Suit suit : Suit.values()) {
-			for(Rank rank : Rank.values()) {
+			for(Rank rank : Rank.values())
 				cards.add(new Card(suit, rank));
-			}
 		}
-		return cards;
+		shuffle();
 	}
 	
 	public int checkDeckSize() {
@@ -31,16 +30,14 @@ public class Deck {
 	
 	public void dealCards(int numberOfCards, Player player) {
 		for(int i = 0; i < numberOfCards; ++i) {
-			if(cards.isEmpty()) {
-				cards = createDeck();
-				suffle();
-			}
-			Card card = dealCard();
-			player.receiveCard(card);
+			if(cards.isEmpty())
+				fillDeck();
+			
+			player.receiveCard(dealCard());
 		}
 	}
 	
-	public void suffle() {
+	public void shuffle() {
 		Collections.shuffle(cards);
 	}
 }

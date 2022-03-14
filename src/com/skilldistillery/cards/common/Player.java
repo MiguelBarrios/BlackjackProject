@@ -18,7 +18,7 @@ public class Player {
 
 	@Override
 	public String toString() {
-		return name + hand + " (" + hand.getHandValue() + ")";
+		return name + " hand = " + hand.getHandValue()+ ", Cards" +hand;
 	}
 	
 	public int getHandValue() {
